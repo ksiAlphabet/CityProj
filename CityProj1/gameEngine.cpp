@@ -8,8 +8,8 @@ Shop* shop = nullptr;
 House* house = nullptr;
 //MyPlace* myplace = nullptr;
 
-ActionPerson* hugary = nullptr;
-ActionPerson* slep = nullptr;
+ActionPerson* hungry = nullptr;
+ActionPerson* sleep = nullptr;
 ActionPerson* standing = nullptr;
 
 
@@ -95,15 +95,15 @@ bool gameEngine::loadData()
 
 	int tx, ty;
 	shop->getCenter(tx, ty);
-	hugary = new (std::nothrow) ActionPerson(shop, tx, ty, 20, "shop");
-	if (!hugary) {
+	hungry = new (std::nothrow) ActionPerson(shop, tx, ty, 20, "shop");
+	if (!hungry) {
 		return false;
 	}
-	hugary->costOfAction = shop->costShop();
+	hungry->costOfAction = shop->costShop();
 
 	house->getCenter(tx, ty);
-	slep = new (std::nothrow) ActionPerson(house, tx, ty, 30, "house");
-	if (!slep) {
+	sleep = new (std::nothrow) ActionPerson(house, tx, ty, 30, "house");
+	if (!sleep) {
 		return false;
 	}
 
@@ -112,7 +112,7 @@ bool gameEngine::loadData()
 		return false;
 	}
 
-	ActionPerson* actions[3] = { standing, slep, hugary };
+	ActionPerson* actions[3] = { standing, sleep, hungry };
 	man->addBaseAction(actions);
 	return true;
 }
@@ -152,8 +152,8 @@ void gameEngine::getInfo()
 void gameEngine::close()
 {
 	delete standing;
-	delete slep;
-	delete hugary;
+	delete sleep;
+	delete hungry;
 	/*delete myplace;*/
 	delete house;
 	delete shop;

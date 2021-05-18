@@ -97,7 +97,7 @@ public:
 	//Shop* shop;
 
 	// odpowiada za poruszanie siê
-	const int baseMowe = 18;
+	const int baseMove = 18;
 	bool canMove = true;
 	int directionx = 0, directiony = 0; // odpowiada za kierunek poruszania góra/dó³, prawo/lewo
 	int xa = 0, ya = 0;

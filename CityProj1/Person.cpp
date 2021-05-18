@@ -170,8 +170,8 @@ bool Person::walking(int x2, int y2)
 		directionx = x > x2 ? -1 : 1;
 		directiony = y > y2 ? -1 : 1;
 
-		xa = xPath / baseMowe; ya = yPath / baseMowe;
-		rx = xPath - xa * baseMowe; ry = yPath - ya * baseMowe;
+		xa = xPath / baseMove; ya = yPath / baseMove;
+		rx = xPath - xa * baseMove; ry = yPath - ya * baseMove;
 
 		canMove = false;
 		return true;
@@ -207,12 +207,12 @@ void Person::move()
 		{
 			if (xa == 0 && ya != 0)
 			{
-				movingy = baseMowe;
+				movingy = baseMove;
 				ya -= 1;
 			}
 			else if (ya == 0 && xa != 0)
 			{
-				movingx = baseMowe;
+				movingx = baseMove;
 				xa -= 1;
 			}
 			else
@@ -221,12 +221,12 @@ void Person::move()
 				if (choice == 1)
 				{
 					xa -= 1;
-					movingx = baseMowe;
+					movingx = baseMove;
 				}
 				else
 				{
 					ya -= 1;
-					movingy = baseMowe;
+					movingy = baseMove;
 				}
 			}
 		}
