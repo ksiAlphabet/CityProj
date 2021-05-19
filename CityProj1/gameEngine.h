@@ -36,6 +36,7 @@ public:
 	gameObject(SDL_Renderer* renderer) : mTexture(nullptr), renderer(renderer), x(0), y(0) {}
 	gameObject(SDL_Renderer* renderer, int x, int y) : mTexture(nullptr), renderer(renderer), x(x), y(y) {}
 	~gameObject();
+
 	void clearObject() {
 		// trzeba pamiêtaæ ¿e przy u¿yciu tej funkcji trzeba na nowo ustaliæ wielkoœæ obiektu !!!
 		// nie zmiena za to po³o¿enia obiektu !!!

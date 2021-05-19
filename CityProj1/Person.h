@@ -29,7 +29,7 @@ class ActionPerson
 	const char* nazwa;
 
 	Place* place;
-	int destination[2] = { 0 };
+	int destination[2] = { 0 };  // okreœlaj¹ gdzie bêdziemy iœc by ukoñczyæ nasz¹ akcji i ile to bêdzie trwaæ
 	const int TIME;
 	int timeToEnd = TIME;
 
@@ -94,8 +94,6 @@ public:
 	bool living = true;
 	//Job job;
 
-	//Shop* shop;
-
 	// odpowiada za poruszanie siê
 	const int baseMove = 18;
 	bool canMove = true;
@@ -112,19 +110,20 @@ public:
 
 	//odpowiada za wykonywane akcje
 	//ActionPerson* timeTable = nullptr;
-	ActionPerson* baseAction[3]; // standing slep hugary  <----- static ma byæ!!!!!
+	ActionPerson* baseAction[3]; // standing slep hugary  <----- static ma byæ ???? ale czy na pewno jak inicjalizowaæ tak¹ tablicê :(
 
 	std::queue<ActionPerson*> timeTable;
 	ActionPerson* currentTask = nullptr;
 	
 public:
 	Person(SDL_Renderer* renderer, int x, int y , const int& age, std::string name);
-
 	~Person() {}
 	virtual void update() override;
+	void addBaseAction(ActionPerson** ab) { for (int i = 0; i < 3; i++) baseAction[i] = ab[i]; }
 	//void life();
 
 	//// main vital functions
+	// wp³ywaj¹ na statystyki naszej postaci, np na g³ód albo wskaŸnik snu, odpowiednio go zani¿aj¹c
 	void wantSleep();
 	void wantEat();
 	void getTired();
@@ -132,17 +131,18 @@ public:
 	void wantEntertainment();
 	void useGoods();
 
+	// opowiadaj¹ za funkcjonowanie postacji w œwiecie np za jej ruch albo po³acenie za posi³ek
 	bool myMoney(int money) { return money <= budget; }
 	void pay(int cost) { budget -= cost; }
 	bool walking(int x2, int y2);
 	void move();
 	void death();
 
+
+	// wp³ywaj¹ na statystyki naszej postaci, np na g³ód albo wskaŸnik snu, odpowiednio go podnosz¹c
 	void doSleep(unsigned sleeptime);
 	void doEat(unsigned food);
 
-	//void addShop(Shop* s) { shop = s; } // nie wiem jak zaplanowaæ interakcje miêdzy elementami gry
-
-	void addBaseAction(ActionPerson** ab) { for (int i = 0; i < 3; i++) baseAction[i] = ab[i]; }
+	
 };
 

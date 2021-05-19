@@ -6,7 +6,6 @@
 Person* man = nullptr;
 Shop* shop = nullptr;
 House* house = nullptr;
-//MyPlace* myplace = nullptr;
 
 ActionPerson* hungry = nullptr;
 ActionPerson* sleep = nullptr;
@@ -16,8 +15,7 @@ ActionPerson* standing = nullptr;
 
 gameObject::~gameObject() 
 { 
-	clearObject();
-	//SDL_DestroyTexture(mTexture);
+	clearObject(); // pozbywa siê tekstury
 }
 
 bool gameEngine::init(std::string title, int width, int height)
@@ -78,7 +76,6 @@ bool gameEngine::loadData()
 	}
 	if (!shop->FromFile("shop.png")) return false;
 	shop->changeSizeOfTexture(2, 2);
-	//man->addShop(shop);
 
 	house = new (std::nothrow) House(renderer, width - 220, 70, 10);
 	if (!house) {
@@ -86,12 +83,6 @@ bool gameEngine::loadData()
 	}
 	if (!house->FromFile("house.png")) return false;
 	house->changeSizeOfTexture(60, 20, false);
-
-	/*myplace = new (std::nothrow) MyPlace(nullptr, width / 2, height / 2);
-	if (!myplace) {
-		return false;
-	}*/
-
 
 	int tx, ty;
 	shop->getCenter(tx, ty);
@@ -154,7 +145,6 @@ void gameEngine::close()
 	delete standing;
 	delete sleep;
 	delete hungry;
-	/*delete myplace;*/
 	delete house;
 	delete shop;
 	delete man;

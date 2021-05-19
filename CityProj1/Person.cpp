@@ -156,10 +156,10 @@ void Person::doEat(unsigned food) {
 }
 
 
-
+// tej funkcji u¿ywamy gdy chcemy gdzieœ doiœæ, ustawia cel naszej podró¿y
 bool Person::walking(int x2, int y2)
 {
-	 //x1,y1 - to jesteœmy my
+	 //x,y - to jesteœmy my pochodz¹ z pól persony
 	 //x2, y2 - to nasz cel
 	int xPath = abs(x - x2), yPath = abs(y - y2);
 
@@ -181,6 +181,8 @@ bool Person::walking(int x2, int y2)
 	
 }
 
+// jest ju¿ u¿yta, pobiera aktualne kroki do wykonania, które s¹ podyktowane
+// ustawionym celem naszej podró¿y
 void Person::move()
 {
 	int choice;
