@@ -113,13 +113,36 @@ void Person::update()
 	}
 }
 
+bool Person::baseActionCreator(Shop* shop)
+{
+	if (baseAction[0]) return false;
+
+	baseAction[0] = new (std::nothrow) ActionPerson(nullptr, 640 / 2, 480 / 2, 10, "standing");
+	if (!baseAction[0]) {
+		return false;
+	}
+
+	myHome = new (std::nothrow) House(renderer, 640 - 220, 70, 10);
+	if (!myHome) {
+		return false;
+	}
+	if (!myHome->FromFile("house.png")) return false;
+	myHome->changeSizeOfTexture(60, 20, false);
+
+	int tx, ty;
+	myHome->getCenter(tx, ty);
+	baseAction[2] = new (std::nothrow) ActionPerson(myHome, tx, ty, 5, "house");
+	if (!baseAction[2]) {
+		return false;
+	}
+
+}
+
 void Person::death()
 {
 	clearObject();
 	if (!FromFile("skull.png")) health = -1000;
 }
-
-
 
 void Person::wantSleep() {
 	if (sleeping < SLPEEPING_VALUE)

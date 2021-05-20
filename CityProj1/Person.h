@@ -110,16 +110,18 @@ public:
 
 	//odpowiada za wykonywane akcje
 	//ActionPerson* timeTable = nullptr;
-	ActionPerson* baseAction[3]; // standing slep hugary  <----- static ma byæ ???? ale czy na pewno jak inicjalizowaæ tak¹ tablicê :(
+	ActionPerson* baseAction[3] = {nullptr}; // standing slep hugary  <----- static ma byæ ???? ale czy na pewno jak inicjalizowaæ tak¹ tablicê :(
 
 	std::queue<ActionPerson*> timeTable;
 	ActionPerson* currentTask = nullptr;
+	House* myHome = nullptr;
 	
 public:
 	Person(SDL_Renderer* renderer, int x, int y , const int& age, std::string name);
 	~Person() {}
 	virtual void update() override;
 	void addBaseAction(ActionPerson** ab) { for (int i = 0; i < 3; i++) baseAction[i] = ab[i]; }
+	bool baseActionCreator(Shop* shop);
 	//void life();
 
 	//// main vital functions

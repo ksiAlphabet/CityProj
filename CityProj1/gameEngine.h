@@ -40,6 +40,7 @@ public:
 	void clearObject() {
 		// trzeba pamiêtaæ ¿e przy u¿yciu tej funkcji trzeba na nowo ustaliæ wielkoœæ obiektu !!!
 		// nie zmiena za to po³o¿enia obiektu !!!
+
 		SDL_DestroyTexture(mTexture);
 		mTexture = nullptr;
 		mWidth = mHeight = tWidth = tHeight = 0;

@@ -5,16 +5,17 @@
 
 Person* man = nullptr;
 Shop* shop = nullptr;
-House* house = nullptr;
+//House* house = nullptr;
 
 ActionPerson* hungry = nullptr;
-ActionPerson* sleep = nullptr;
-ActionPerson* standing = nullptr;
+//ActionPerson* sleep = nullptr;
+//ActionPerson* standing = nullptr;
 
 
 
 gameObject::~gameObject() 
 { 
+	// nie nale¿y usuwaæ renderera, odpowiada za to klasa gameEngine
 	clearObject(); // pozbywa siê tekstury
 }
 
@@ -77,12 +78,12 @@ bool gameEngine::loadData()
 	if (!shop->FromFile("shop.png")) return false;
 	shop->changeSizeOfTexture(2, 2);
 
-	house = new (std::nothrow) House(renderer, width - 220, 70, 10);
+	/*house = new (std::nothrow) House(renderer, width - 220, 70, 10);
 	if (!house) {
 		return false;
 	}
 	if (!house->FromFile("house.png")) return false;
-	house->changeSizeOfTexture(60, 20, false);
+	house->changeSizeOfTexture(60, 20, false);*/
 
 	int tx, ty;
 	shop->getCenter(tx, ty);
@@ -98,13 +99,13 @@ bool gameEngine::loadData()
 		return false;
 	}
 
-	standing = new (std::nothrow) ActionPerson(nullptr, width / 2, height / 2, 10, "standing");
+	/*standing = new (std::nothrow) ActionPerson(nullptr, width / 2, height / 2, 10, "standing");
 	if (!standing) {
 		return false;
-	}
+	}*/
 
-	ActionPerson* actions[3] = { standing, sleep, hungry };
-	man->addBaseAction(actions);
+	/*ActionPerson* actions[3] = { standing, sleep, hungry };
+	man->addBaseAction(actions);*/
 	return true;
 }
 
